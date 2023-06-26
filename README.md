@@ -40,14 +40,13 @@ Use the AWS CLI to create the Lambda function by running the following command:
 **aws lambda create-function --function-name s3-sns-notifications --runtime python3.10 --handler lambda_function.lambda_handler --role YOUR_LAMBDA_ROLE_ARN --zip-file fileb://lambda_function.zip**
 
 **Step 7: Configure S3 Trigger**
-Create an s3_trigger_config.json file in the current directory with the following contents:
+Create an S3 bucket and specifying the Event trigger from the Properties. Allowing object creation and object removal.
 
+![image](https://github.com/FuzailN/s3-sns-file-notifications/assets/129302212/ce545008-45b0-46c4-b8db-a6b97aadbb42)
 
-![image](https://github.com/FuzailN/s3-sns-file-notifications/assets/129302212/b8b226cc-11a6-4d1f-a728-611494d6ec73)
+![image](https://github.com/FuzailN/s3-sns-file-notifications/assets/129302212/61bcc0f2-d25f-488f-bdd3-cc3d4710bb80)
 
-Run the following command in the terminal or command prompt to configure the S3 trigger for the Lambda function:
-
-**aws s3api put-bucket-notification-configuration --bucket YOUR_BUCKET_NAME --notification-configuration file://s3_trigger_config.json**
+In the lambda function console, we can see that the S3 trigger is added
 
 **Step 8: Verifying the Event Notification**
 On uploading/deleting an object in the S3 bucket, we get an email notification as shown in the figure below.
