@@ -32,6 +32,9 @@ This policy allows your Lambda function to publish messages to any SNS topic.
 
 Save the policy --> Go back to the role creation wizard --> search for the custom policy you just created ("SNSPublishPolicy"). Select the policy--> Provide a name for the role (e.g., "LambdaS3SNSRole") and click on "Create role
 
+![image](https://github.com/FuzailN/s3-sns-file-notifications/assets/129302212/ce9c0ac8-9e84-44f7-a223-07019aa335e6)
+
+
 **Step 7: Create the Lambda Function**
 Open a terminal or command prompt and configure your AWS credentials using the aws configure command
 
@@ -39,7 +42,8 @@ Use the AWS CLI to create the Lambda function by running the following command:
 
 **aws lambda create-function --function-name s3-sns-notifications --runtime python3.10 --handler lambda_function.lambda_handler --role YOUR_LAMBDA_ROLE_ARN --zip-file fileb://lambda_function.zip**
 
-**Step 7: Configure S3 Trigger**
+**Step 7: Configure S3 Trigger (or) Add Trigger in Lambda Function**
+
 Create an S3 bucket and specifying the Event trigger from the Properties. Allowing object creation and object removal.
 
 ![image](https://github.com/FuzailN/s3-sns-file-notifications/assets/129302212/ce545008-45b0-46c4-b8db-a6b97aadbb42)
@@ -50,6 +54,10 @@ In the lambda function console, we can see that the S3 trigger is added
 
 **Step 8: Verifying the Event Notification**
 On uploading/deleting an object in the S3 bucket, we get an email notification as shown in the figure below.
+
+![image](https://github.com/FuzailN/s3-sns-file-notifications/assets/129302212/d8c42ef6-59c9-45cb-93f5-54cf92aadaa6)
+
+![image](https://github.com/FuzailN/s3-sns-file-notifications/assets/129302212/db2eedd9-f3ef-4452-9de0-fce6169968a5)
 
 ![image](https://github.com/FuzailN/s3-sns-file-notifications/assets/129302212/02df463a-5d32-418f-8e3f-87fff30903b1)
 
